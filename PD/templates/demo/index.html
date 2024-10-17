@@ -12,21 +12,19 @@
 
         <!-- Form to upload image -->
         <div class="card shadow p-4">
-            <form action="result.html" method="POST" enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label for="file" class="form-label">Tải file ảnh lên:</label>
-                    <input class="form-control" type="file" id="file" name="file" accept=".png, .jpg, .jpeg" required onchange="previewFile()">
-                </div>
-                <!-- Tên tệp đã chọn -->
-                <div class="mb-3">
-                    <p id="file-name" class="text-muted"></p>
-                </div>
-                <!-- Hiển thị ảnh xem trước -->
-                <div class="mb-3">
-                    <img id="preview-image" class="img-fluid" style="max-width: 400px; display: none;" alt="Preview Image">
-                </div>
-                <button type="submit" class="btn btn-primary">Phân loại</button>
-            </form>
+            <div class="mb-3">
+                <label for="file" class="form-label">Tải file ảnh lên:</label>
+                <input class="form-control" type="file" id="file" name="file" accept=".png, .jpg, .jpeg" required onchange="previewFile()">
+            </div>
+            <!-- Tên tệp đã chọn -->
+            <div class="mb-3">
+                <p id="file-name" class="text-muted"></p>
+            </div>
+            <!-- Hiển thị ảnh xem trước -->
+            <div class="mb-3">
+                <img id="preview-image" class="img-fluid" style="max-width: 400px; display: none;" alt="Preview Image">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='result.html'">Phân loại</button>
         </div>
     </div>
 
@@ -38,6 +36,7 @@
             const fileName = document.getElementById('file-name');
 
             if (file) {
+                fileName.textContent = `Selected file: ${file.name}`;
 
                 const reader = new FileReader();
                 reader.onload = function (e) {
